@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon, MessageCircleMoreIcon } from "lucide-react";
 
 export const DATA = {
   name: "Daniel Rivero",
@@ -14,20 +14,23 @@ export const DATA = {
   avatarUrl: "/me.png",
   skills: [
     "React",
+    "Angular",
+    "Vue",
     "Next.js",
     "Typescript",
     "Node.js",
     "Python",
-    "Go",
     "Postgres",
     "Docker",
-    "Kubernetes",
+    "AWS",
     "Java",
-    "C++",
+    "Javascript",
+    "C",
+    "C#",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    { href: "/blog", icon: MessageCircleMoreIcon, label: "Chat" },
   ],
   contact: {
     email: "danielrivero2000@gmail.com",
@@ -79,9 +82,9 @@ export const DATA = {
       title: "Sr. Software Engineer",
       logoUrl: "/mx-global.png",
       start: "July 2023",
-      end: "Ongoing",
+      // end: "Ongoing",
       description:
-        "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
+        "As a Senior Software Engineer at MX Global Services, I've been instrumental in automating and optimizing various processes. I've developed an Angular and Xano-based solution to streamline manual journal calculations for multiple clients, and I've built custom APIs in Xano to enhance the efficiency of daily tasks for the account and finance teams. Additionally, I've maintained and optimized the existing infrastructure, and I've implemented automated solutions and integrated no-code services through REST APIs and cloud-based solutions.",
     },
     {
       company: "Newtoms LLC",
@@ -91,13 +94,13 @@ export const DATA = {
       title: "Software Engineer and Cloud Solutions Architect",
       logoUrl: "/newtoms.png",
       start: "January 2023",
-      end: "Ongoing",
+      // end: "Ongoing",
       description:
-        "Implemented a custom Kubernetes controller in Go to automate the deployment of MySQL and ProxySQL custom resources in order to enable 2,000+ internal developers to instantly deploy their app databases to production. Wrote several scripts in Go to automate MySQL database failovers while maintaining master-slave replication topologies and keeping Zookeeper nodes consistent with changes.",
+        "During my time at Newtons LLC, I was involved in the development of innovative products, including Avatar X and virtual staging. I utilized Angular and AWS to build scalable and efficient solutions. For my thesis project, I architected a semi-real-time smart surveillance system that leveraged AWS services like Rekognition Custom Labels, Kinesis Video Streams, SageMaker, S3, CloudFront, API Gateway, Cognito, AppSync, Amplify, and a GraphQL API to detect and analyze incidents in real-time. The system incorporated computer vision and audio analysis techniques to identify persons, weapons, fires, and gunshots. Real-time notifications were delivered using AppSync, and the processing of video streams was streamlined through a serverless architecture utilizing multiple Lambda functions and event-driven communication via SQS and SNS. Docker containers were used to handle image processing with OpenCV and to connect the camera to the AWS cloud.",
     },
     {
       company: "PwC Venezuela",
-      href: "https://nvidia.com/",
+      href: "https://www.pwc.com/ve/es.html",
       badges: [],
       location: "Hybrid",
       title: "Jr. Software Engineer",
@@ -105,7 +108,7 @@ export const DATA = {
       start: "March 2021",
       end: "December 2022",
       description:
-        "Architected and wrote the entire MVP of the GeForce Now Cloud Gaming internal admin and A/B testing dashboard using React, Redux, TypeScript, and Python.",
+        "At PwC Venezuela, I was responsible for maintaining and developing new features for the company’s self-improvement platform. This web application, built with Angular, Express, and Microsoft SQL Server, automates various manual tasks across different departments. I played a key role in developing a module to manage the client base and automate the lifecycle and budget management of audit projects, leading to significant efficiency gains for over five departments.",
     },
   ],
   education: [
