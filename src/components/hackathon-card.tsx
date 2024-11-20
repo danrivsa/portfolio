@@ -9,7 +9,7 @@ interface Props {
   location: string;
   image?: string;
   links?: readonly {
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
     title: string;
     href: string;
   }[];
