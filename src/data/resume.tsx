@@ -135,6 +135,22 @@ export const DATA = {
     "rabbitmq",
     "reactivex",
   ],
+  interpersonal_skills:[
+    "Effective Communication",
+    "Active Listening",
+    "Empathy",
+    "Teamwork",
+    "Conflict Resolution",
+  ],
+  personal_qualities:[
+    "Resilience",
+    "Self-Awareness",
+    "Problem-Solving",
+    "Critical Thinking",
+    "Creativity",
+    "Work Ethic",
+
+  ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     // { href: "/blog", icon: MessageCircleMoreIcon, label: "Chat" },
