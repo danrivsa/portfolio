@@ -125,9 +125,18 @@ export default function Page() {
         </div>
       </section>
       <section id="skills">
-        <div className="flex min-h-0 flex-col gap-y-3">
+        <div className="flex min-h-0 flex-col gap-y-3 justify-center text-center">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
+            <div className="space-y-2 mb-4">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                Hard Skills
+              </h2>
+              <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mb-4">
+                As a software engineer and computer scientist, I possess a
+                strong foundation in various programming languages, frameworks
+                and technologies. Here are some of my key technical skills
+              </p>
+            </div>
           </BlurFade>
           <div className="flex flex-wrap gap-1">
             {DATA.skills.map((skill, id) => (
@@ -193,7 +202,7 @@ export default function Page() {
                   Game jams
                 </div> */}
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  I Like Building Games
+                  Additional Skills
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   During my time in university, I attended{" "}
@@ -232,10 +241,11 @@ export default function Page() {
               Adaptable Communicator
             </h2>
             <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mb-10">
-            Leveraging language skills to overcome language barriers and find innovative solutions.
+              Leveraging language skills to overcome language barriers and find
+              innovative solutions.
             </p>
             <div className="flex justify-center flex-wrap gap-3">
-                <LangSwipper blur_delay={BLUR_FADE_DELAY}></LangSwipper>
+              <LangSwipper blur_delay={BLUR_FADE_DELAY}></LangSwipper>
               {/* {DATA.languages.map((lang, index) => (
                 <BlurFade delay={BLUR_FADE_DELAY * index} key={lang.name}>
                   <ShineBorder  color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}>

@@ -31,20 +31,20 @@ export const LangSwipper = (props: SwipperProps) => {
             delay: 2500,
             disableOnInteraction: false,
           }}
-        breakpoints={{
-          640: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 1,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 1,
-            spaceBetween: 50,
-          },
-        }}
+        // breakpoints={{
+        //   640: {
+        //     slidesPerView: 1,
+        //     spaceBetween: 20,
+        //   },
+        //   768: {
+        //     slidesPerView: 1,
+        //     spaceBetween: 40,
+        //   },
+        //   1024: {
+        //     slidesPerView: 1,
+        //     spaceBetween: 50,
+        //   },
+        // }}
         style={{ maxWidth: "320px", height: "240px" }}
         // spaceBetween={50}
         // slidesPerView={1}

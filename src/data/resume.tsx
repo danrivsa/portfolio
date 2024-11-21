@@ -11,7 +11,7 @@ export const DATA = {
   description:
     "Software engineer and AI enthusiast. I love building innovative solutions and explore new tech trends",
   summary:
-    "I'm a motivated software engineer with a passion for building innovative solutions. I'm skilled in [architecting robust cloud solutions on AWS and leveraging state-of-the-art technologies](/#skills). With a [background in IT engineering](/#education), I bring a unique perspective to problem-solving and software development. I also have experience in game development through [numerous game jams i participated just for fun](/#gamejams).",
+    "I'm a motivated software engineer with a passion for building innovative solutions. I'm skilled in [architecting robust cloud solutions on AWS and leveraging state-of-the-art technologies](/#skills). With a [background in computer science](/#education), I bring a unique perspective to problem-solving and software development. I also have experience in game development through [numerous game jams i participated just for fun](/#gamejams).",
   avatarUrl: "/me.png",
   languages:[
     {
@@ -45,8 +45,11 @@ export const DATA = {
     "CSS3",
     "Next.js",
     "Node.js",
+    "RxJS",
     "Python",
-    "Postgres",
+    "PostgresSQL",
+    "GraphQL",
+    "MySQL",
     "Docker",
     "AWS",
     "Java",
@@ -79,6 +82,7 @@ export const DATA = {
     "Keras",
     "Unity",
     "Godot",
+    "RabittMQ",
   ],
   skills_slugs: [
     "typescript",
@@ -93,6 +97,8 @@ export const DATA = {
     "express",
     "amazonaws",
     "postgresql",
+    "mysql",
+    "graphql",
     "firebase",
     "vercel",
     "jest",
@@ -122,6 +128,12 @@ export const DATA = {
     "keras",
     "unity",
     "godotengine",
+    "c",
+    "csharp",
+    "nextdotjs",
+    "nodejs",
+    "rabbitmq",
+    "reactivex",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -191,7 +203,7 @@ export const DATA = {
       start: "January 2023",
       end: undefined,
       description:
-        "During my time at Newtons LLC, I was involved in the development of innovative products, including Avatar X and Virtual Staging. I utilized Angular and AWS to build scalable and efficient solutions. For my thesis project, I architected a semi-real-time smart surveillance system that leveraged AWS services like Rekognition Custom Labels, Kinesis Video Streams, SageMaker, S3, CloudFront, API Gateway, Cognito, AppSync, Amplify, and a GraphQL API to detect and analyze incidents in real-time. The system incorporated computer vision and audio analysis techniques to identify persons, weapons, fires, and gunshots. Real-time notifications were delivered using AppSync, and the processing of video streams was streamlined through a serverless architecture utilizing multiple Lambda functions and event-driven communication via SQS and SNS. Docker containers were used to handle image processing with OpenCV and to connect the camera to the AWS cloud.",
+        "During my time at Newtoms LLC, I was involved in the development of innovative products, including Avatar X and Virtual Staging. I utilized Angular and AWS to build scalable and efficient solutions. For my thesis project, I architected a semi-real-time smart surveillance system that leveraged AWS services like Rekognition Custom Labels, Kinesis Video Streams, SageMaker, S3, CloudFront, API Gateway, Cognito, AppSync, Amplify, and a GraphQL API to detect and analyze incidents in real-time. The system incorporated computer vision and audio analysis techniques to identify persons, weapons, fires, and gunshots. Real-time notifications were delivered using AppSync, and the processing of video streams was streamlined through a serverless architecture utilizing multiple Lambda functions and event-driven communication via SQS and SNS. Docker containers were used to handle image processing with OpenCV and to connect the camera to the AWS cloud.",
     },
     {
       company: "PwC Venezuela",
