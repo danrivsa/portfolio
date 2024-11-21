@@ -209,7 +209,7 @@ export default function Page() {
         <BlurFade delay={BLUR_FADE_DELAY * 11}>
           <h2 className="text-xl font-bold mb-4">Interpersonal Skills</h2>
         </BlurFade>
-        <div className="flex flex-wrap gap-1 mb-4 sm:justify-center xs:justify-center md:justify-start">
+        <div className="flex flex-wrap gap-1 mb-10 sm:justify-center xs:justify-center md:justify-start">
             {DATA.interpersonal_skills.map((skill, id) => (
               <BlurFade key={skill} delay={BLUR_FADE_DELAY * 11 + id * 0.05}>
                 <Badge key={skill}>{skill}</Badge>
