@@ -14,6 +14,7 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/pagination";
 import "./lang-swipper.css";
+import Image from "next/image";
 
 type SwipperProps = {
   blur_delay: number;
@@ -52,7 +53,7 @@ export const LangSwipper = (props: SwipperProps) => {
       >
         {DATA.languages.map((lang, id) => {
           return (
-            <BlurFade delay={BLUR_FADE_DELAY * props.blur_delay * id}>
+            <BlurFade delay={BLUR_FADE_DELAY * props.blur_delay * id} key={id}>
               <SwiperSlide
                 style={{
                   display: "flex",
@@ -63,7 +64,9 @@ export const LangSwipper = (props: SwipperProps) => {
                   maxWidth: "320px",
                 }}
               >
-                <img
+                <Image
+                  alt={lang.name + lang.level}
+                  key={lang.name + id}
                   src={lang.url}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
