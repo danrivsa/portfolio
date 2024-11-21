@@ -1,4 +1,5 @@
 import { Icons } from "@/components/icons";
+import { BellIcon } from "@radix-ui/react-icons";
 import { Gamepad, HomeIcon, MessageCircleMoreIcon } from "lucide-react";
 import { title } from "process";
 
@@ -13,28 +14,28 @@ export const DATA = {
   summary:
     "I'm a motivated software engineer with a passion for building innovative solutions. I'm skilled in [architecting robust cloud solutions on AWS and leveraging state-of-the-art technologies](/#skills). With a [background in computer science](/#education), I bring a unique perspective to problem-solving and software development. I also have experience in game development through [numerous game jams i participated just for fun](/#gamejams).",
   avatarUrl: "/me.png",
-  languages:[
+  languages: [
     {
-      name:"Spanish",
-      level:"Native",
-      category:"C2",
-      code:'esp',
+      name: "Spanish",
+      level: "Native",
+      category: "C2",
+      code: "esp",
       // url:'https://www.all-flags-world.com/country-flag/Spain/flag-spain-XL.jpg'
-      url:'/vzla.jpg'
+      url: "/vzla.jpg",
     },
     {
-      name:"English",
-      level:"Bilingual",
-      category:"C2",
-      code:'gb',
-      url:'/usa.jpg'
+      name: "English",
+      level: "Bilingual",
+      category: "C2",
+      code: "gb",
+      url: "/usa.jpg",
     },
     {
-      name:"French",
-      level:"Intermediate",
-      category:"A2",
-      code:'fr',
-      url:'/fr.jpg'
+      name: "French",
+      level: "Intermediate",
+      category: "A2",
+      code: "fr",
+      url: "/fr.jpg",
     },
   ],
   skills: [
@@ -135,21 +136,40 @@ export const DATA = {
     "rabbitmq",
     "reactivex",
   ],
-  interpersonal_skills:[
+  interpersonal_skills: [
     "Effective Communication",
     "Active Listening",
     "Empathy",
     "Teamwork",
     "Conflict Resolution",
   ],
-  personal_qualities:[
+  personal_qualities: [
     "Resilience",
     "Self-Awareness",
     "Problem-Solving",
     "Critical Thinking",
     "Creativity",
     "Work Ethic",
-
+  ],
+  photos: [
+    {
+     photo_file:'/1.jpg'
+    },
+    {
+     photo_file:'/2.jpg'
+    },
+    {
+     photo_file:'/3.jpg'
+    },
+    {
+     photo_file:'/4.jpg'
+    },
+    {
+     photo_file:'/5.jpg'
+    },
+    {
+     photo_file:'/6.jpg'
+    }
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },

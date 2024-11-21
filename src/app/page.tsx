@@ -196,12 +196,14 @@ export default function Page() {
       <section id="soft_skills">
         <div className="space-y-12 w-full py-7">
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
-          <div className="space-y-2 mb-4 text-center">
+            <div className="space-y-2 mb-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                 Soft Skills
               </h2>
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mb-4">
-              Beyond technical expertise, I am a collaborative team player with strong communication and problem-solving skills. Here are some of my key soft skills
+                Beyond technical expertise, I am a collaborative team player
+                with strong communication and problem-solving skills. Here are
+                some of my key soft skills
               </p>
             </div>
           </BlurFade>
@@ -210,22 +212,40 @@ export default function Page() {
           <h2 className="text-xl font-bold mb-4">Interpersonal Skills</h2>
         </BlurFade>
         <div className="flex flex-wrap gap-1 mb-10 sm:justify-center xs:justify-center md:justify-start">
-            {DATA.interpersonal_skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 11 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
-              </BlurFade>
-            ))}
-          </div>
+          {DATA.interpersonal_skills.map((skill, id) => (
+            <BlurFade key={skill} delay={BLUR_FADE_DELAY * 11 + id * 0.05}>
+              <Badge key={skill}>{skill}</Badge>
+            </BlurFade>
+          ))}
+        </div>
         <BlurFade delay={BLUR_FADE_DELAY * 12}>
           <h2 className="text-xl font-bold mb-4">Personal Qualities</h2>
         </BlurFade>
-        <div className="flex flex-wrap gap-1 sm:justify-center xs:justify-center md:justify-start">
-            {DATA.personal_qualities.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 12 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
+        <div className="flex flex-wrap mb-6 gap-1 sm:justify-center xs:justify-center md:justify-start">
+          {DATA.personal_qualities.map((skill, id) => (
+            <BlurFade key={skill} delay={BLUR_FADE_DELAY * 12 + id * 0.05}>
+              <Badge key={skill}>{skill}</Badge>
+            </BlurFade>
+          ))}
+        </div>
+      </section>
+      <section id="photos">
+        <div className="columns-2 gap-4 sm:columns-3">
+          {DATA.photos.map((p, idx) => {
+            return (
+              <BlurFade delay={BLUR_FADE_DELAY * 12.5 + idx * 0.05} key={idx}>
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  data-nimg="1"
+                  style={{ color: "transparent" }}
+                  className="aspect-w-16 aspect-h-9 mb-4 w-full rounded-lg object-cover"
+                  src={p.photo_file}
+                ></img>
               </BlurFade>
-            ))}
-          </div>
+            );
+          })}
+        </div>
       </section>
       <section id="gamejams">
         <div className="space-y-12 w-full py-12">
