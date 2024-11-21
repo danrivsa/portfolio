@@ -1,0 +1,16 @@
+@media (max-width: 400px) {
+  .swipper{
+    width: 300px;
+  }
+  .swiper-slide {
+    max-width: 300px;
+  }
+}
+@media (max-width: 767px) {
+  .swipper{
+    width: 400px;
+  }
+    .swiper-slide {
+      max-width: 400px;
+    }
+  }

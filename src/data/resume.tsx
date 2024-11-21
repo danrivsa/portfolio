@@ -18,19 +18,23 @@ export const DATA = {
       name:"Spanish",
       level:"Native",
       category:"C2",
-      percentage:100
+      code:'esp',
+      // url:'https://www.all-flags-world.com/country-flag/Spain/flag-spain-XL.jpg'
+      url:'https://www.all-flags-world.com/country-flag/Venezuela/flag-venezuela-XL.jpg'
     },
     {
       name:"English",
-      level:"Advance",
+      level:"Bilingual",
       category:"C2",
-      percentage:100
+      code:'gb',
+      url:'https://www.all-flags-world.com/country-flag/USA/flag-usa-XL.jpg'
     },
     {
       name:"French",
-      level:"Beginner",
+      level:"Intermediate",
       category:"A2",
-      percentage:35
+      code:'fr',
+      url:'https://www.all-flags-world.com/country-flag/France/flag-france-XL.jpg'
     },
   ],
   skills: [
@@ -66,6 +70,15 @@ export const DATA = {
     "Tensorflow",
     "Jupyter",
     "Stripe",
+    "GoDaddy",
+    "CPanel",
+    "Arduino",
+    "Python",
+    "Numpy",
+    "Pandas",
+    "Keras",
+    "Unity",
+    "Godot",
   ],
   skills_slugs: [
     "typescript",
@@ -100,6 +113,15 @@ export const DATA = {
     "tensorflow",
     "jupyter",
     "stripe",
+    "godaddy",
+    "cpanel",
+    "arduino",
+    "python",
+    "numpy",
+    "pandas",
+    "keras",
+    "unity",
+    "godotengine",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -157,7 +179,7 @@ export const DATA = {
       start: "July 2023",
       end: undefined,
       description:
-        "As a Senior Software Engineer at MX Global Services, I've been instrumental in automating and optimizing various processes. I've developed an Angular and Xano-based solution to streamline manual journal calculations for multiple clients, and I've built custom APIs in Xano to enhance the efficiency of daily tasks for the account and finance teams. Additionally, I've maintained and optimized the existing infrastructure, and I've implemented automated solutions and integrated no-code services through REST APIs and cloud-based solutions.",
+        "As a Senior Software Engineer at MX Global Center, I focused on enhancing operational efficiency and streamlining processes. I was instrumental in maintaining and optimizing critical infrastructure components, implementing innovative software solutions and APIs to automate repetitive tasks. I leveraged my expertise in Angular and Xano to develop custom applications, including an ETL process to automate manual journal calculations. By automating these tasks, I significantly reduced operational costs, increased accuracy, and improved overall productivity.",
     },
     {
       company: "Newtoms LLC",
@@ -169,14 +191,14 @@ export const DATA = {
       start: "January 2023",
       end: undefined,
       description:
-        "During my time at Newtons LLC, I was involved in the development of innovative products, including Avatar X and virtual staging. I utilized Angular and AWS to build scalable and efficient solutions. For my thesis project, I architected a semi-real-time smart surveillance system that leveraged AWS services like Rekognition Custom Labels, Kinesis Video Streams, SageMaker, S3, CloudFront, API Gateway, Cognito, AppSync, Amplify, and a GraphQL API to detect and analyze incidents in real-time. The system incorporated computer vision and audio analysis techniques to identify persons, weapons, fires, and gunshots. Real-time notifications were delivered using AppSync, and the processing of video streams was streamlined through a serverless architecture utilizing multiple Lambda functions and event-driven communication via SQS and SNS. Docker containers were used to handle image processing with OpenCV and to connect the camera to the AWS cloud.",
+        "During my time at Newtons LLC, I was involved in the development of innovative products, including Avatar X and Virtual Staging. I utilized Angular and AWS to build scalable and efficient solutions. For my thesis project, I architected a semi-real-time smart surveillance system that leveraged AWS services like Rekognition Custom Labels, Kinesis Video Streams, SageMaker, S3, CloudFront, API Gateway, Cognito, AppSync, Amplify, and a GraphQL API to detect and analyze incidents in real-time. The system incorporated computer vision and audio analysis techniques to identify persons, weapons, fires, and gunshots. Real-time notifications were delivered using AppSync, and the processing of video streams was streamlined through a serverless architecture utilizing multiple Lambda functions and event-driven communication via SQS and SNS. Docker containers were used to handle image processing with OpenCV and to connect the camera to the AWS cloud.",
     },
     {
       company: "PwC Venezuela",
       href: "https://www.pwc.com/ve/es.html",
       badges: [],
       location: "Hybrid",
-      title: "Jr. Software Engineer",
+      title: "Assocciate (RAS) and Jr. Software Engineer",
       logoUrl: "/pwc.png",
       start: "March 2021",
       end: "December 2022",
@@ -188,136 +210,136 @@ export const DATA = {
     {
       school: "Catholic University Andrés Bello",
       href: "https://www.ucab.edu.ve/",
-      degree: "Bachelor of Engineering in Information Technology (B.Eng. IT)",
+      degree: "Bachelor's Degree in Computer Science",
       logoUrl: "/ucab.png",
       start: "2017",
       end: "2023",
     },
   ],
-  projects: [
-    {
-      title: "Chat Collect",
-      href: "https://chatcollect.com",
-      dates: "Jan 2024 - Feb 2024",
-      active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://chatcollect.com",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
-    },
-    {
-      title: "Magic UI",
-      href: "https://magicui.design",
-      dates: "June 2023 - Present",
-      active: true,
-      description:
-        "Designed, developed and sold animated UI components for developers.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://magicui.design",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/magicuidesign/magicui",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "",
-      video: "https://cdn.magicui.design/bento-grid.mp4",
-    },
-    {
-      title: "llm.report",
-      href: "https://llm.report",
-      dates: "April 2023 - September 2023",
-      active: true,
-      description:
-        "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://llm.report",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/dillionverma/llm.report",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "",
-      video: "https://cdn.llm.report/openai-demo.mp4",
-    },
-    {
-      title: "Automatic Chat",
-      href: "https://automatic.chat",
-      dates: "April 2023 - March 2024",
-      active: true,
-      description:
-        "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://automatic.chat",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
-    },
-  ],
+  // projects: [
+  //   {
+  //     title: "Chat Collect",
+  //     href: "https://chatcollect.com",
+  //     dates: "Jan 2024 - Feb 2024",
+  //     active: true,
+  //     description:
+  //       "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+  //     technologies: [
+  //       "Next.js",
+  //       "Typescript",
+  //       "PostgreSQL",
+  //       "Prisma",
+  //       "TailwindCSS",
+  //       "Stripe",
+  //       "Shadcn UI",
+  //       "Magic UI",
+  //     ],
+  //     links: [
+  //       {
+  //         type: "Website",
+  //         href: "https://chatcollect.com",
+  //         icon: <Icons.globe className="size-3" />,
+  //       },
+  //     ],
+  //     image: "",
+  //     video:
+  //       "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+  //   },
+  //   {
+  //     title: "Magic UI",
+  //     href: "https://magicui.design",
+  //     dates: "June 2023 - Present",
+  //     active: true,
+  //     description:
+  //       "Designed, developed and sold animated UI components for developers.",
+  //     technologies: [
+  //       "Next.js",
+  //       "Typescript",
+  //       "PostgreSQL",
+  //       "Prisma",
+  //       "TailwindCSS",
+  //       "Stripe",
+  //       "Shadcn UI",
+  //       "Magic UI",
+  //     ],
+  //     links: [
+  //       {
+  //         type: "Website",
+  //         href: "https://magicui.design",
+  //         icon: <Icons.globe className="size-3" />,
+  //       },
+  //       {
+  //         type: "Source",
+  //         href: "https://github.com/magicuidesign/magicui",
+  //         icon: <Icons.github className="size-3" />,
+  //       },
+  //     ],
+  //     image: "",
+  //     video: "https://cdn.magicui.design/bento-grid.mp4",
+  //   },
+  //   {
+  //     title: "llm.report",
+  //     href: "https://llm.report",
+  //     dates: "April 2023 - September 2023",
+  //     active: true,
+  //     description:
+  //       "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
+  //     technologies: [
+  //       "Next.js",
+  //       "Typescript",
+  //       "PostgreSQL",
+  //       "Prisma",
+  //       "TailwindCSS",
+  //       "Shadcn UI",
+  //       "Magic UI",
+  //       "Stripe",
+  //       "Cloudflare Workers",
+  //     ],
+  //     links: [
+  //       {
+  //         type: "Website",
+  //         href: "https://llm.report",
+  //         icon: <Icons.globe className="size-3" />,
+  //       },
+  //       {
+  //         type: "Source",
+  //         href: "https://github.com/dillionverma/llm.report",
+  //         icon: <Icons.github className="size-3" />,
+  //       },
+  //     ],
+  //     image: "",
+  //     video: "https://cdn.llm.report/openai-demo.mp4",
+  //   },
+  //   {
+  //     title: "Automatic Chat",
+  //     href: "https://automatic.chat",
+  //     dates: "April 2023 - March 2024",
+  //     active: true,
+  //     description:
+  //       "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
+  //     technologies: [
+  //       "Next.js",
+  //       "Typescript",
+  //       "PostgreSQL",
+  //       "Prisma",
+  //       "TailwindCSS",
+  //       "Shadcn UI",
+  //       "Magic UI",
+  //       "Stripe",
+  //       "Cloudflare Workers",
+  //     ],
+  //     links: [
+  //       {
+  //         type: "Website",
+  //         href: "https://automatic.chat",
+  //         icon: <Icons.globe className="size-3" />,
+  //       },
+  //     ],
+  //     image: "",
+  //     video:
+  //       "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
+  //   },
+  // ],
   gamejams: [
     {
       title: "Global Game Jam",
