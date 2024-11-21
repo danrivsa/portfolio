@@ -20,21 +20,21 @@ export const DATA = {
       category:"C2",
       code:'esp',
       // url:'https://www.all-flags-world.com/country-flag/Spain/flag-spain-XL.jpg'
-      url:'https://www.all-flags-world.com/country-flag/Venezuela/flag-venezuela-XL.jpg'
+      url:'/vzla.jpg'
     },
     {
       name:"English",
       level:"Bilingual",
       category:"C2",
       code:'gb',
-      url:'https://www.all-flags-world.com/country-flag/USA/flag-usa-XL.jpg'
+      url:'/usa.jpg'
     },
     {
       name:"French",
       level:"Intermediate",
       category:"A2",
       code:'fr',
-      url:'https://www.all-flags-world.com/country-flag/France/flag-france-XL.jpg'
+      url:'/fr.jpg'
     },
   ],
   skills: [
