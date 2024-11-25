@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import Flag from "react-world-flags";
+import Image from 'next/image'
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -234,14 +235,15 @@ export default function Page() {
           {DATA.photos.map((p, idx) => {
             return (
               <BlurFade delay={BLUR_FADE_DELAY * 12.5 + idx * 0.05} key={idx}>
-                <img
+                <Image
+                  alt='pic'
                   loading="lazy"
                   decoding="async"
                   data-nimg="1"
                   style={{ color: "transparent" }}
                   className="aspect-w-16 aspect-h-9 mb-4 w-full rounded-lg object-cover"
                   src={p.photo_file}
-                ></img>
+                ></Image>
               </BlurFade>
             );
           })}

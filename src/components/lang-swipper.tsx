@@ -64,7 +64,7 @@ export const LangSwipper = (props: SwipperProps) => {
                   maxWidth: "320px",
                 }}
               >
-                <img
+                <Image
                   alt={lang.name + lang.level}
                   key={lang.name + id}
                   src={lang.url}
