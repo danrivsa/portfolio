@@ -35,8 +35,7 @@ jobs:
       - name: Build with Next.js 🏗️
         run: |
           npm run build
-          echo "Build completed. Checking 'out' directory..."
-          ls -la ./out
+          echo "Build completed"
 
       - name: List Files
         run:  ls 
