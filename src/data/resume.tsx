@@ -223,7 +223,7 @@ export const DATA = {
       badges: [],
       location: "Remote",
       title: "Sr. Software Engineer",
-      logoUrl: "/mx-global.png",
+      logoUrl: "./mx-global.png",
       start: "Jul 2023",
       end: undefined,
       description:
@@ -235,7 +235,7 @@ export const DATA = {
       href: "https://www.newtoms.com/",
       location: "Remote",
       title: "Software Engineer and Cloud Solutions Architect",
-      logoUrl: "/newtoms.png",
+      logoUrl: "./newtoms.png",
       start: "Jan 2023",
       end: undefined,
       description:
@@ -247,7 +247,7 @@ export const DATA = {
       badges: [],
       location: "Hybrid",
       title: "Assocciate (RAS) and Jr. Software Engineer",
-      logoUrl: "/pwc.png",
+      logoUrl: "./pwc.png",
       start: "Mar 2021",
       end: "Dec 2022",
       description:
@@ -259,7 +259,7 @@ export const DATA = {
       school: "Catholic University Andrés Bello",
       href: "https://www.ucab.edu.ve/",
       degree: "Bachelor's Degree in Computer Science",
-      logoUrl: "/ucab.png",
+      logoUrl: "./ucab.png",
       start: "2017",
       end: "2023",
     },
