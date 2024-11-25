@@ -45,7 +45,7 @@ export const LangSwipper = (props: SwipperProps) => {
         //     spaceBetween: 50,
         //   },
         // }}
-        style={{ maxWidth: "320px", height: "240px" }}
+        style={{ maxWidth: "320px", height: "240px" }} 
         // spaceBetween={50}
         // slidesPerView={1}
         // onSlideChange={() => console.log("slide change")}
