@@ -13,7 +13,7 @@ export const DATA = {
     "Software engineer and AI enthusiast. I love building innovative solutions and explore new tech trends",
   summary:
     "I'm a motivated software engineer with a passion for building innovative solutions. I'm skilled in [architecting robust cloud solutions on AWS and leveraging state-of-the-art technologies](/#skills). With a [background in computer science](/#education), I bring a unique perspective to problem-solving and software development. I also have experience in game development through [numerous game jams i participated just for fun](/#gamejams).",
-  avatarUrl: "/me.png",
+  avatarUrl: "./me.png",
   languages: [
     {
       name: "Spanish",
@@ -21,21 +21,21 @@ export const DATA = {
       category: "C2",
       code: "esp",
       // url:'https://www.all-flags-world.com/country-flag/Spain/flag-spain-XL.jpg'
-      url: "/vzla.jpg",
+      url: "./vzla.jpg",
     },
     {
       name: "English",
       level: "Bilingual",
       category: "C2",
       code: "gb",
-      url: "/usa.jpg",
+      url: "./usa.jpg",
     },
     {
       name: "French",
       level: "Intermediate",
       category: "A2",
       code: "fr",
-      url: "/fr.jpg",
+      url: "./fr.jpg",
     },
   ],
   skills: [
@@ -153,22 +153,22 @@ export const DATA = {
   ],
   photos: [
     {
-     photo_file:'/1.jpg'
+     photo_file:'./1.jpg'
     },
     {
-     photo_file:'/2.jpg'
+     photo_file:'./2.jpg'
     },
     {
-     photo_file:'/3.jpg'
+     photo_file:'./3.jpg'
     },
     {
-     photo_file:'/4.jpg'
+     photo_file:'./4.jpg'
     },
     {
-     photo_file:'/5.jpg'
+     photo_file:'./5.jpg'
     },
     {
-     photo_file:'/6.jpg'
+     photo_file:'./6.jpg'
     }
   ],
   navbar: [
@@ -395,7 +395,7 @@ export const DATA = {
       location: "Caracas, Venezuela",
       description:
         "Developed a dungeon crawler game using the Unity Game Engine and C#",
-      image: "/gamejam-logo.svg",
+      image: "./gamejam-logo.svg",
       mlh: "",
       links: [
         {
@@ -410,7 +410,7 @@ export const DATA = {
       location: "Remote",
       description:
         "Developed a 2D Shooter game with a christmas topic with the Unity Game Engine and C#",
-      image: "/extra-credits.png",
+      image: "./extra-credits.png",
       mlh: "",
       links: [
         {
@@ -425,7 +425,7 @@ export const DATA = {
       location: "Caracas, Venezuela",
       description:
         "Developed an story based game inspired in Gone home using the Unity Game Engine and C#",
-      image: "/gamejam-logo.svg",
+      image: "./gamejam-logo.svg",
       mlh: "",
       links: [
         {
@@ -440,7 +440,7 @@ export const DATA = {
       location: "Remote",
       description:
         "Developed a game based on charon's passage through the styx river with the Unity Game Engine and C#",
-      image: "/extra-credits.png",
+      image: "./extra-credits.png",
       mlh: "",
       links: [
         {
