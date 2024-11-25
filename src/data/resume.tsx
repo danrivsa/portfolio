@@ -224,7 +224,7 @@ export const DATA = {
       location: "Remote",
       title: "Sr. Software Engineer",
       logoUrl: "/mx-global.png",
-      start: "July 2023",
+      start: "Jul 2023",
       end: undefined,
       description:
         "As a Senior Software Engineer at MX Global Center, I focused on enhancing operational efficiency and streamlining processes. I was instrumental in maintaining and optimizing critical infrastructure components, implementing innovative software solutions and APIs to automate repetitive tasks. I leveraged my expertise in Angular and Xano to develop custom applications, including an ETL process to automate manual journal calculations. By automating these tasks, I significantly reduced operational costs, increased accuracy, and improved overall productivity.",
@@ -236,7 +236,7 @@ export const DATA = {
       location: "Remote",
       title: "Software Engineer and Cloud Solutions Architect",
       logoUrl: "/newtoms.png",
-      start: "January 2023",
+      start: "Jan 2023",
       end: undefined,
       description:
         "During my time at Newtoms LLC, I was involved in the development of innovative products, including Avatar X and Virtual Staging. I utilized Angular and AWS to build scalable and efficient solutions. For my thesis project, I architected a semi-real-time smart surveillance system that leveraged AWS services like Rekognition Custom Labels, Kinesis Video Streams, SageMaker, S3, CloudFront, API Gateway, Cognito, AppSync, Amplify, and a GraphQL API to detect and analyze incidents in real-time. The system incorporated computer vision and audio analysis techniques to identify persons, weapons, fires, and gunshots. Real-time notifications were delivered using AppSync, and the processing of video streams was streamlined through a serverless architecture utilizing multiple Lambda functions and event-driven communication via SQS and SNS. Docker containers were used to handle image processing with OpenCV and to connect the camera to the AWS cloud.",
@@ -248,8 +248,8 @@ export const DATA = {
       location: "Hybrid",
       title: "Assocciate (RAS) and Jr. Software Engineer",
       logoUrl: "/pwc.png",
-      start: "March 2021",
-      end: "December 2022",
+      start: "Mar 2021",
+      end: "Dec 2022",
       description:
         "At PwC Venezuela, I was responsible for maintaining and developing new features for the company’s self-improvement platform. This web application, built with Angular, Express, and Microsoft SQL Server, automates various manual tasks across different departments. I played a key role in developing a module to manage the client base and automate the lifecycle and budget management of audit projects, leading to significant efficiency gains for over five departments.",
     },
