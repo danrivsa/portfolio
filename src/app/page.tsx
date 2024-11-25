@@ -235,7 +235,7 @@ export default function Page() {
           {DATA.photos.map((p, idx) => {
             return (
               <BlurFade delay={BLUR_FADE_DELAY * 12.5 + idx * 0.05} key={idx}>
-                <Image
+                <img
                   alt='pic'
                   loading="lazy"
                   decoding="async"
@@ -243,7 +243,7 @@ export default function Page() {
                   style={{ color: "transparent" }}
                   className="aspect-w-16 aspect-h-9 mb-4 w-full rounded-lg object-cover"
                   src={p.photo_file}
-                ></Image>
+                ></img>
               </BlurFade>
             );
           })}
