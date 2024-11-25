@@ -32,8 +32,8 @@ jobs:
       - name: Build with Next.js 🏗️
         run: npm run build
 
-      - name: List Files in Out Directory
-        run: ls
+      - name: List Files
+        run: cd .. && ls 
         # run: |
         #   ls -la ./out
         #   echo "Checking the contents of the 'out' directory..."
