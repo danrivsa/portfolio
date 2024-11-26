@@ -12,7 +12,7 @@ export const DATA = {
   description:
     "Software engineer and AI enthusiast. I love building innovative solutions and explore new tech trends",
   summary:
-    "I'm a motivated software engineer with a passion for building innovative solutions. I'm skilled in [architecting robust cloud solutions on AWS and leveraging state-of-the-art technologies](/#skills). With a [background in computer science](/#education), I bring a unique perspective to problem-solving and software development. I also have experience in game development through [numerous game jams i participated just for fun](/#gamejams).",
+    "I'm a motivated software engineer with a passion for building innovative solutions. I'm skilled in [architecting robust cloud solutions on AWS and leveraging state-of-the-art technologies](/portfolio/#skills). With a [background in computer science](/portfolio/#education), I bring a unique perspective to problem-solving and software development. I also have experience in game development through [numerous game jams i participated just for fun](/portfolio/#gamejams).",
   avatarUrl: "./me.png",
   languages: [
     {
