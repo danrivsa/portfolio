@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -56,20 +57,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* <!-- Google tag (gtag.js) --> */}
-        <Script
-          async
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-CKEB2GKY1S"
-        ></Script>
-        <Script id="site-analytics" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-CKEB2GKY1S');`}
-        </Script>
-      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
@@ -83,6 +70,7 @@ export default function RootLayout({
           </TooltipProvider>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-CKEB2GKY1S" />
     </html>
   );
 }
