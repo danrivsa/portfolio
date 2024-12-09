@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+import SmoothScrolling from "@/components/ui/smooth-scrollet";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -63,7 +64,10 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
           <TooltipProvider delayDuration={0}>
-            {children}
+            <SmoothScrolling>
+
+              {children}
+            </SmoothScrolling>
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>
