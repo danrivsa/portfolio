@@ -6,12 +6,9 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-<<<<<<< HEAD
 import Script from "next/script";
 import { GoogleAnalytics } from '@next/third-parties/google'
-=======
 import SmoothScrolling from "@/components/ui/smooth-scrollet";
->>>>>>> dev
 
 const fontSans = FontSans({
   subsets: ["latin"],
