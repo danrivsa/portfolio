@@ -222,12 +222,12 @@ export const DATA = {
       href: "https://mxglobal.center/",
       badges: [],
       location: "Remote",
-      title: "Sr. Software Engineer",
+      title: "Software Engineer",
       logoUrl: "./mx-global.png",
       start: "Oct 2024",
       end: undefined,
       description:
-        "As a Senior Software Engineer at MX Global Center, I focused on enhancing operational efficiency and streamlining processes. I was instrumental in maintaining and optimizing critical infrastructure components, implementing innovative software solutions and APIs to automate repetitive tasks. I leveraged my expertise in Angular and Xano to develop custom applications, including an ETL process to automate manual journal calculations. By automating these tasks, I significantly reduced operational costs, increased accuracy, and improved overall productivity.",
+        "As a Software Engineer at MX Global Center, I focused on enhancing operational efficiency and streamlining processes. I was instrumental in maintaining and optimizing critical infrastructure components, implementing innovative software solutions and APIs to automate repetitive tasks. I leveraged my expertise in Angular and Xano to develop custom applications, including an ETL process to automate manual journal calculations. By automating these tasks, I significantly reduced operational costs, increased accuracy, and improved overall productivity.",
     },
     {
       company: "Newtoms LLC",
