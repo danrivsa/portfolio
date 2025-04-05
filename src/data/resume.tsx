@@ -237,7 +237,7 @@ export const DATA = {
       title: "Jr. Software Developer and Cloud Solutions Architect",
       logoUrl: "./newtoms.png",
       start: "Jan 2023",
-      end: undefined,
+      end: "Apr 2025",
       description:
         "During my time at Newtoms LLC, I was involved in the development of innovative products, including Avatar X and Virtual Staging. I utilized Angular and AWS to build scalable and efficient solutions. For my thesis project, I architected a semi-real-time smart surveillance system that leveraged AWS services like Rekognition Custom Labels, Kinesis Video Streams, SageMaker, S3, CloudFront, API Gateway, Cognito, AppSync, Amplify, and a GraphQL API to detect and analyze incidents in real-time. The system incorporated computer vision and audio analysis techniques to identify persons, weapons, fires, and gunshots. Real-time notifications were delivered using AppSync, and the processing of video streams was streamlined through a serverless architecture utilizing multiple Lambda functions and event-driven communication via SQS and SNS. Docker containers were used to handle image processing with OpenCV and to connect the camera to the AWS cloud.",
     },
