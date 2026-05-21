@@ -261,7 +261,7 @@ export const DATA = {
       degree: "Bachelor's Degree in Computer Science",
       logoUrl: "./ucab.png",
       start: "2017",
-      end: "2023",
+      end: "2025",
     },
   ],
   // projects: [
