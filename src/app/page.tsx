@@ -8,6 +8,7 @@ import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { ShineBorder } from "@/components/shine-border";
+import AIChatButton from "@/components/ai-chat-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
@@ -23,16 +24,6 @@ export default function Page() {
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
-        {/* <DotPattern
-        width={20}
-        height={50}
-        cx={1}
-        cy={1}
-        cr={1}
-        className={cn(
-          "[mask-image:linear-gradient(to_bottom,white,transparent,transparent)] ",
-        )}
-      /> */}
         <AnimatedGridPattern
           numSquares={100}
           maxOpacity={0.1}
@@ -76,6 +67,20 @@ export default function Page() {
             {DATA.summary}
           </Markdown>
         </BlurFade>
+      </section>
+      <section id="chat-w-my-assistant">
+        <div className="flex min-h-0 flex-col gap-y-3 justify-center">
+          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <h2 className="text-xl font-bold">Cut straight to the chase</h2>
+            <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert dark:prose-invert">
+              Ask away any questions you have about me, my work, how can I bring value to your business, or anything else you want to know.
+            </p>
+            <div className="flex flex-col justify-center items-center mt-4">
+                <AIChatButton></AIChatButton>
+            </div>
+          </BlurFade>
+          
+        </div>
       </section>
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
@@ -324,6 +329,9 @@ export default function Page() {
         </div>
       </section>
 
+      <section id="ai-chat">
+      </section>
+
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
@@ -335,7 +343,7 @@ export default function Page() {
                 Get in Touch
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat? Just{" "}
+                Want to chat with me? Just{" "}
                 <Link
                   href={DATA.contact.social.LinkedIn.url}
                   className="text-blue-500 hover:underline"
