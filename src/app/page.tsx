@@ -17,6 +17,7 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 import Flag from "react-world-flags";
 import Image from 'next/image'
+import {Chat} from "@/components/ai-chat";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -330,6 +331,7 @@ export default function Page() {
       </section>
 
       <section id="ai-chat">
+        <Chat/>
       </section>
 
       <section id="contact">
