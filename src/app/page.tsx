@@ -72,10 +72,6 @@ export default function Page() {
       <section id="chat-w-my-assistant">
         <div className="flex min-h-0 flex-col gap-y-3 justify-center">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-xl font-bold">Cut straight to the chase</h2>
-            <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert dark:prose-invert">
-              Ask away any questions you have about me, my work, how can I bring value to your business, or anything else you want to know.
-            </p>
             <div className="flex flex-col justify-center items-center mt-4">
                 <AIChatButton></AIChatButton>
             </div>
@@ -308,30 +304,28 @@ export default function Page() {
             </p>
             <div className="flex justify-center flex-wrap gap-3">
               <LangSwipper blur_delay={BLUR_FADE_DELAY}></LangSwipper>
-              {/* {DATA.languages.map((lang, index) => (
-                <BlurFade delay={BLUR_FADE_DELAY * index} key={lang.name}>
-                  <ShineBorder  color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}>
-                    <div className="bg-background text-foreground" style={{borderRadius:7, width:'100%', padding:'2rem', display:'flex', flexDirection:'column', height:'auto'}} >
-                      <div className="container">
-                        <div className="flex-col">
-                          <Flag code={lang.code}></Flag>
-                        </div>
-                        <div className="flex-col">
-                          <p>{lang.name}</p>
-                          <p className="text-xs">{lang.level}&nbsp;{lang.category}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </ShineBorder>
-                </BlurFade>
-              ))} */}
             </div>
           </BlurFade>
         </div>
       </section>
 
       <section id="ai-chat">
-        <Chat/>
+        <div className="grid items-center mb-4 justify-center gap-4 px-4 md:px-6 w-full py-12">
+          <BlurFade delay={BLUR_FADE_DELAY * 15}>
+              <div className="space-y-3 text-center mb-4">
+                {/* <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+                  Contact
+                </div> */}
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Meet my AI assitant
+                </h2>
+                <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Want to quickly know more on how I can help your business or get to know my experience? Try my personal AI assitant
+                </p>
+              </div>
+                <Chat/>
+            </BlurFade>
+        </div>
       </section>
 
       <section id="contact">
