@@ -32,9 +32,16 @@ export const DATA = {
     },
     {
       name: "French",
-      level: "Intermediate",
-      category: "A2",
+      level: "Advanced",
+      category: "B2",
       code: "fr",
+      url: "./fr.jpg",
+    },
+    {
+      name: "German",
+      level: "Beginer",
+      category: "A1",
+      code: "de",
       url: "./fr.jpg",
     },
   ],
@@ -84,6 +91,8 @@ export const DATA = {
     "Unity",
     "Godot",
     "RabittMQ",
+    "Reactivex",
+    "Langchain"
   ],
   skills_slugs: [
     "typescript",
@@ -135,6 +144,7 @@ export const DATA = {
     "nodejs",
     "rabbitmq",
     "reactivex",
+    "langchain",
   ],
   interpersonal_skills: [
     "Effective Communication",
