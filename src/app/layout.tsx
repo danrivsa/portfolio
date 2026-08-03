@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
+import Script from "next/script";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import SmoothScrolling from "@/components/ui/smooth-scrollet";
 import { Geist } from "next/font/google";
 
@@ -70,6 +72,7 @@ export default function RootLayout({
           </TooltipProvider>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-CKEB2GKY1S" />
     </html>
   );
 }
