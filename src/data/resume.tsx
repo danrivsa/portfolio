@@ -10,10 +10,10 @@ export const DATA = {
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "Software engineer and AI enthusiast. I love building innovative solutions and explore new tech trends",
+    "AI & Software engineer. I love building innovative solutions and explore new tech trends",
   summary:
-    "I'm a motivated software engineer with a passion for building innovative solutions. I'm skilled in [architecting robust cloud solutions on AWS and leveraging state-of-the-art technologies](/portfolio/#skills). With a [background in computer science](/portfolio/#education), I bring a unique perspective to problem-solving and software development. I also have experience in game development through [numerous game jams i participated just for fun](/portfolio/#gamejams).",
-  avatarUrl: "./me.png",
+    "I'm a motivated AI & software engineer with a passion for building innovative solutions. I'm skilled in [architecting robust cloud solutions on AWS and leveraging state-of-the-art technologies](/portfolio/#skills). With a [background in computer science](/portfolio/#education), I bring a unique perspective to problem-solving and software development. I also have experience in game development through [numerous game jams i participated just for fun](/portfolio/#gamejams).",
+  avatarUrl: "/portfolio/me.png",
   languages: [
     {
       name: "Spanish",
@@ -21,21 +21,28 @@ export const DATA = {
       category: "C2",
       code: "esp",
       // url:'https://www.all-flags-world.com/country-flag/Spain/flag-spain-XL.jpg'
-      url: "./vzla.jpg",
+      url: "/portfolio/vzla.jpg",
     },
     {
       name: "English",
       level: "Bilingual",
-      category: "C2",
+      category: "C1",
       code: "gb",
-      url: "./usa.jpg",
+      url: "/portfolio/usa.jpg",
     },
     {
       name: "French",
-      level: "Intermediate",
-      category: "A2",
+      level: "Advanced",
+      category: "B2",
       code: "fr",
-      url: "./fr.jpg",
+      url: "/portfolio/fr.jpg",
+    },
+    {
+      name: "German",
+      level: "Beginner",
+      category: "A1",
+      code: "de",
+      url: "/portfolio/germany.jpg",
     },
   ],
   skills: [
@@ -84,6 +91,8 @@ export const DATA = {
     "Unity",
     "Godot",
     "RabittMQ",
+    "Reactivex",
+    "Langchain"
   ],
   skills_slugs: [
     "typescript",
@@ -135,6 +144,7 @@ export const DATA = {
     "nodejs",
     "rabbitmq",
     "reactivex",
+    "langchain",
   ],
   interpersonal_skills: [
     "Effective Communication",
@@ -153,22 +163,22 @@ export const DATA = {
   ],
   photos: [
     {
-     photo_file:'./1.jpg'
+    photo_file:'/portfolio/1.jpg'
     },
     {
-     photo_file:'./2.jpg'
+    photo_file:'/portfolio/2.jpg'
     },
     {
-     photo_file:'./3.jpg'
+    photo_file:'/portfolio/3.jpg'
     },
     {
-     photo_file:'./4.jpg'
+    photo_file:'/portfolio/4.jpg'
     },
     {
-     photo_file:'./5.jpg'
+    photo_file:'/portfolio/5.jpg'
     },
     {
-     photo_file:'./6.jpg'
+    photo_file:'/portfolio/6.jpg'
     }
   ],
   navbar: [
@@ -223,7 +233,7 @@ export const DATA = {
       badges: [],
       location: "Remote",
       title: "Software Engineer",
-      logoUrl: "./mx-global.png",
+      logoUrl: "/portfolio/mx-global.png",
       start: "Oct 2024",
       end: undefined,
       description:
@@ -235,7 +245,7 @@ export const DATA = {
       href: "https://www.newtoms.com/",
       location: "Remote",
       title: "Jr. Software Developer and Cloud Solutions Architect",
-      logoUrl: "./newtoms.png",
+      logoUrl: "/portfolio/newtoms.png",
       start: "Jan 2023",
       end: "Apr 2025",
       description:
@@ -247,7 +257,7 @@ export const DATA = {
       badges: [],
       location: "Hybrid",
       title: "Assocciate (RAS) and Jr. Software Developer",
-      logoUrl: "./pwc.png",
+      logoUrl: "/portfolio/pwc.png",
       start: "Mar 2021",
       end: "Dec 2022",
       description:
@@ -259,7 +269,7 @@ export const DATA = {
       school: "Catholic University Andrés Bello",
       href: "https://www.ucab.edu.ve/",
       degree: "Bachelor's Degree in Computer Science",
-      logoUrl: "./ucab.png",
+      logoUrl: "/portfolio/ucab.png",
       start: "2017",
       end: "2025",
     },
@@ -395,7 +405,7 @@ export const DATA = {
       location: "Caracas, Venezuela",
       description:
         "Developed a dungeon crawler game using the Unity Game Engine and C#",
-      image: "./gamejam-logo.svg",
+      image: "/portfolio/gamejam-logo.svg",
       mlh: "",
       links: [
         {
@@ -410,7 +420,7 @@ export const DATA = {
       location: "Remote",
       description:
         "Developed a 2D Shooter game with a christmas topic with the Unity Game Engine and C#",
-      image: "./extra-credits.png",
+      image: "/portfolio/extra-credits.png",
       mlh: "",
       links: [
         {
@@ -425,7 +435,7 @@ export const DATA = {
       location: "Caracas, Venezuela",
       description:
         "Developed an story based game inspired in Gone home using the Unity Game Engine and C#",
-      image: "./gamejam-logo.svg",
+      image: "/portfolio/gamejam-logo.svg",
       mlh: "",
       links: [
         {
@@ -440,7 +450,7 @@ export const DATA = {
       location: "Remote",
       description:
         "Developed a game based on charon's passage through the styx river with the Unity Game Engine and C#",
-      image: "./extra-credits.png",
+      image: "/portfolio/extra-credits.png",
       mlh: "",
       links: [
         {

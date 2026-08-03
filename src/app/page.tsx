@@ -1,21 +1,20 @@
 import { AnimatedGridPattern } from "@/components/animated-grid-pattern";
-import { DotPattern } from "@/components/dot-pattern";
 import { IconCloud } from "@/components/dynamic-icon-cloud";
 import { HackathonCard } from "@/components/hackathon-card";
 import { LangSwipper } from "@/components/lang-swipper";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { ProjectCard } from "@/components/project-card";
-import { ResumeCard } from "@/components/resume-card";
-import { ShineBorder } from "@/components/shine-border";
+import AIChatButton from "@/components/ai-chat-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Markdown from "react-markdown";
-import Flag from "react-world-flags";
-import Image from 'next/image'
+import WorkSection from "@/components/sections/work-section";
+import EducationSection from "@/components/sections/education-section";
+import AIAssistantSection from "@/components/sections/ai-assitant-section";
+import { AuroraText } from "@/components/ui/aurora-text";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -23,16 +22,6 @@ export default function Page() {
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
-        {/* <DotPattern
-        width={20}
-        height={50}
-        cx={1}
-        cy={1}
-        cr={1}
-        className={cn(
-          "[mask-image:linear-gradient(to_bottom,white,transparent,transparent)] ",
-        )}
-      /> */}
         <AnimatedGridPattern
           numSquares={100}
           maxOpacity={0.1}
@@ -46,12 +35,12 @@ export default function Page() {
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
-              <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
-                yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
-              />
+              <BlurFade delay={BLUR_FADE_DELAY}>
+                <p className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                    Hi, I'm &nbsp;
+                    <AuroraText>Daniel</AuroraText> 👋
+                </p>
+              </BlurFade>
               <BlurFadeText
                 className="max-w-[600px] md:text-xl"
                 delay={BLUR_FADE_DELAY}
@@ -72,58 +61,28 @@ export default function Page() {
           <h2 className="text-xl font-bold">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert mb-4">
             {DATA.summary}
           </Markdown>
         </BlurFade>
+         <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <div className="flex flex-col justify-center items-center">
+                <AIChatButton></AIChatButton>
+            </div>
+          </BlurFade>
       </section>
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
             <h2 className="text-xl font-bold">Work Experience</h2>
           </BlurFade>
-          {DATA.work.map((work, id) => (
-            <BlurFade
-              key={work.company}
-              delay={BLUR_FADE_DELAY * 6 + id * 0.05}
-            >
-              <ResumeCard
-                key={work.company}
-                logoUrl={work.logoUrl}
-                altText={work.company}
-                title={work.company}
-                subtitle={work.title}
-                href={work.href}
-                badges={work.badges}
-                period={`${work.start} - ${work.end ?? "Present"}`}
-                description={work.description}
-              />
-            </BlurFade>
-          ))}
+          <BlurFade delay={BLUR_FADE_DELAY * 6}>
+            <WorkSection />
+          </BlurFade>
         </div>
       </section>
       <section id="education">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-xl font-bold">Education</h2>
-          </BlurFade>
-          {DATA.education.map((education, id) => (
-            <BlurFade
-              key={education.school}
-              delay={BLUR_FADE_DELAY * 8 + id * 0.05}
-            >
-              <ResumeCard
-                key={education.school}
-                href={education.href}
-                logoUrl={education.logoUrl}
-                altText={education.school}
-                title={education.school}
-                subtitle={education.degree}
-                period={`${education.start} - ${education.end}`}
-              />
-            </BlurFade>
-          ))}
-        </div>
+        <EducationSection/>
       </section>
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3 justify-center text-center">
@@ -302,26 +261,15 @@ export default function Page() {
             </p>
             <div className="flex justify-center flex-wrap gap-3">
               <LangSwipper blur_delay={BLUR_FADE_DELAY}></LangSwipper>
-              {/* {DATA.languages.map((lang, index) => (
-                <BlurFade delay={BLUR_FADE_DELAY * index} key={lang.name}>
-                  <ShineBorder  color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}>
-                    <div className="bg-background text-foreground" style={{borderRadius:7, width:'100%', padding:'2rem', display:'flex', flexDirection:'column', height:'auto'}} >
-                      <div className="container">
-                        <div className="flex-col">
-                          <Flag code={lang.code}></Flag>
-                        </div>
-                        <div className="flex-col">
-                          <p>{lang.name}</p>
-                          <p className="text-xs">{lang.level}&nbsp;{lang.category}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </ShineBorder>
-                </BlurFade>
-              ))} */}
             </div>
           </BlurFade>
         </div>
+      </section>
+
+      <section id="ai-chat">
+        <BlurFade delay={BLUR_FADE_DELAY * 15}>
+          <AIAssistantSection/>
+        </BlurFade>
       </section>
 
       <section id="contact">
@@ -335,7 +283,7 @@ export default function Page() {
                 Get in Touch
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat? Just{" "}
+                Want to chat with me? Just{" "}
                 <Link
                   href={DATA.contact.social.LinkedIn.url}
                   className="text-blue-500 hover:underline"
