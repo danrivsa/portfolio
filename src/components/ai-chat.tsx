@@ -345,7 +345,7 @@ export function Chat() {
 						<ConversationEmptyState
 							className="px-4 py-8"
 							title="Start the conversation"
-							description="Ask me anything about my work, experience, or explore ways we can collaborate."
+							description="Ask anything about my work, experience, or explore ways we can collaborate."
 						/>
 					) : null}
 
