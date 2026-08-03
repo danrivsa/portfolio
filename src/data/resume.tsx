@@ -39,10 +39,10 @@ export const DATA = {
     },
     {
       name: "German",
-      level: "Beginer",
+      level: "Beginner",
       category: "A1",
       code: "de",
-      url: "./fr.jpg",
+      url: "./germany.jpg",
     },
   ],
   skills: [
