@@ -27,7 +27,12 @@ type ChatMessage = {
 	content: string;
 };
 
-const STREAM_URL = "http://localhost:8000/api/chat/stream";
+const STREAM_ENDPOINT = (process.env.AGENT_SERVER_URL
+	? `${process.env.AGENT_SERVER_URL}/chat/stream`
+	: "http://localhost:8000/api/chat/stream");
+const HEALTH_ENDPOINT = (process.env.AGENT_SERVER_URL
+	? `${process.env.AGENT_SERVER_URL}/api/health`
+	: "http://localhost:8000/api/health");
 const STOP_EVENT_TYPES = new Set(["done", "end", "complete"]);
 
 let uuidFallbackCounter = 0;
@@ -190,13 +195,40 @@ async function streamAssistantResponse(
 
 export function Chat() {
 	const [messages, setMessages] = useState<ChatMessage[]>([]);
+	const [agentHealthy, setAgentHealthy] = useState<boolean | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
 
 	const threadIdRef = useRef<string>(createUUIDv4());
 	const activeRequestRef = useRef<AbortController | null>(null);
 
 	useEffect(() => {
+		const abortController = new AbortController();
+
+		async function runHealthCheck() {
+			try {
+				const res = await fetch(HEALTH_ENDPOINT, {
+					method: "GET",
+					signal: abortController.signal,
+					headers: { Accept: "application/json" },
+				});
+
+				if (res.ok) {
+					setAgentHealthy(true);
+					return;
+				}
+
+				setAgentHealthy(false);
+			} catch (err) {
+				if ((err as any)?.name === "AbortError") return;
+				setAgentHealthy(false);
+			}
+		}
+
+		// perform health check when the component mounts
+		runHealthCheck();
+
 		return () => {
+			abortController.abort();
 			activeRequestRef.current?.abort();
 		};
 	}, []);
@@ -262,7 +294,7 @@ export function Chat() {
 		setIsLoading(true);
 
 		try {
-			const response = await fetch(STREAM_URL, {
+			const response = await fetch(STREAM_ENDPOINT, {
 				method: "POST",
 				headers: {
 					Accept: "text/event-stream",

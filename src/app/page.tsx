@@ -1,12 +1,9 @@
 import { AnimatedGridPattern } from "@/components/animated-grid-pattern";
-import { DotPattern } from "@/components/dot-pattern";
 import { IconCloud } from "@/components/dynamic-icon-cloud";
 import { HackathonCard } from "@/components/hackathon-card";
 import { LangSwipper } from "@/components/lang-swipper";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { ProjectCard } from "@/components/project-card";
-import { ResumeCard } from "@/components/resume-card";
 import AIChatButton from "@/components/ai-chat-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -14,11 +11,7 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Markdown from "react-markdown";
-import Flag from "react-world-flags";
-import Image from 'next/image'
-import {Chat} from "@/components/ai-chat";
 import WorkSection from "@/components/sections/work-section";
-import { ArrowUpRight } from "lucide-react";
 import EducationSection from "@/components/sections/education-section";
 import AIAssistantSection from "@/components/sections/ai-assitant-section";
 
