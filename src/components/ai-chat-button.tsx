@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { ShineBorder } from "@/components/shine-border";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
 export default function AIChatButton() {
   const handleClick = () => {
@@ -11,13 +10,8 @@ export default function AIChatButton() {
   };
 
   return (
-      <ShineBorder color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}>
-        <button
-          onClick={handleClick}
-          className="px-4 py-2 rounded-md bg-background opacity-1"
-        >
+      <RainbowButton variant="outline" onClick={handleClick}>
           Chat with my personal AI assistant
-        </button>
-      </ShineBorder>
+      </RainbowButton>
   );
 }

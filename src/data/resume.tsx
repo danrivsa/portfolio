@@ -26,7 +26,7 @@ export const DATA = {
     {
       name: "English",
       level: "Bilingual",
-      category: "C2",
+      category: "C1",
       code: "gb",
       url: "./usa.jpg",
     },
