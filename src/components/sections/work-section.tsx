@@ -23,7 +23,7 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
     <img
       src={src}
       alt={alt}
-      className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
+      className="size-8 md:size-10 p-1 border bg-white rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
       onError={() => setImageError(true)}
     />
   );

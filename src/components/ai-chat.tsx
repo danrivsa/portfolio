@@ -306,15 +306,14 @@ export function Chat() {
 	};
 
 	return (
-		<div className="container mx-auto w-full px-0 sm:px-2">
-			<div className="flex h-[72dvh] min-h-[460px] max-h-[760px] flex-col overflow-hidden rounded-xl border bg-background shadow-sm">
+			<div className="flex h-[80dvh] min-h-[460px] max-h-[760px] flex-col overflow-hidden rounded-xl bg-background shadow-sm">
 				<Conversation className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
 					<ConversationContent className="gap-3 p-3 sm:p-4">
 					{messages.length === 0 ? (
 						<ConversationEmptyState
 							className="px-4 py-8"
 							title="Start the conversation"
-							description="Ask about my work, projects, or how I can help your team."
+							description="Ask me anything about my work, experience, or explore ways we can collaborate."
 						/>
 					) : null}
 
@@ -357,6 +356,5 @@ export function Chat() {
 					</PromptInputFooter>
 				</PromptInput>
 			</div>
-		</div>
 	);
 }

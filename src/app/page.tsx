@@ -7,7 +7,6 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
-import { ShineBorder } from "@/components/shine-border";
 import AIChatButton from "@/components/ai-chat-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +18,9 @@ import Flag from "react-world-flags";
 import Image from 'next/image'
 import {Chat} from "@/components/ai-chat";
 import WorkSection from "@/components/sections/work-section";
+import { ArrowUpRight } from "lucide-react";
+import EducationSection from "@/components/sections/education-section";
+import AIAssistantSection from "@/components/sections/ai-assitant-section";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -65,20 +67,15 @@ export default function Page() {
           <h2 className="text-xl font-bold">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert mb-4">
             {DATA.summary}
           </Markdown>
         </BlurFade>
-      </section>
-      <section id="chat-w-my-assistant">
-        <div className="flex min-h-0 flex-col gap-y-3 justify-center">
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <div className="flex flex-col justify-center items-center mt-4">
+         <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <div className="flex flex-col justify-center items-center">
                 <AIChatButton></AIChatButton>
             </div>
           </BlurFade>
-          
-        </div>
       </section>
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
@@ -91,27 +88,7 @@ export default function Page() {
         </div>
       </section>
       <section id="education">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-xl font-bold">Education</h2>
-          </BlurFade>
-          {DATA.education.map((education, id) => (
-            <BlurFade
-              key={education.school}
-              delay={BLUR_FADE_DELAY * 8 + id * 0.05}
-            >
-              <ResumeCard
-                key={education.school}
-                href={education.href}
-                logoUrl={education.logoUrl}
-                altText={education.school}
-                title={education.school}
-                subtitle={education.degree}
-                period={`${education.start} - ${education.end}`}
-              />
-            </BlurFade>
-          ))}
-        </div>
+        <EducationSection/>
       </section>
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3 justify-center text-center">
@@ -296,22 +273,9 @@ export default function Page() {
       </section>
 
       <section id="ai-chat">
-        <div className="grid items-center mb-4 justify-center gap-4 px-4 md:px-6 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 15}>
-              <div className="space-y-3 text-center mb-4">
-                {/* <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  Contact
-                </div> */}
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Meet my AI assitant
-                </h2>
-                <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Want to quickly know more on how I can help your business or get to know my experience? Try my personal AI assitant
-                </p>
-              </div>
-                <Chat/>
-            </BlurFade>
-        </div>
+        <BlurFade delay={BLUR_FADE_DELAY * 15}>
+          <AIAssistantSection/>
+        </BlurFade>
       </section>
 
       <section id="contact">
