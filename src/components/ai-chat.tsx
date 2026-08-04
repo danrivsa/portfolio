@@ -21,18 +21,17 @@ import {
 	PromptInputTextarea,
 } from "@/components/ai-elements/prompt-input";
 
+//parse env variables
+import "dotenv/config";
+
 type ChatMessage = {
 	id: string;
 	role: "user" | "assistant";
 	content: string;
 };
 
-const STREAM_ENDPOINT = (process.env.AGENT_SERVER_URL
-	? `${process.env.AGENT_SERVER_URL}/chat/stream`
-	: "http://localhost:8000/api/chat/stream");
-const HEALTH_ENDPOINT = (process.env.AGENT_SERVER_URL
-	? `${process.env.AGENT_SERVER_URL}/api/health`
-	: "http://localhost:8000/api/health");
+const STREAM_ENDPOINT = `${process.env.AGENT_SERVER_URL}chat/stream`
+const HEALTH_ENDPOINT = `${process.env.AGENT_SERVER_URL}/api/health`
 const STOP_EVENT_TYPES = new Set(["done", "end", "complete"]);
 
 let uuidFallbackCounter = 0;
