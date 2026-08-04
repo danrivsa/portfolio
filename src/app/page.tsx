@@ -3,7 +3,6 @@ import { IconCloud } from "@/components/dynamic-icon-cloud";
 import { HackathonCard } from "@/components/hackathon-card";
 import { LangSwipper } from "@/components/lang-swipper";
 import BlurFade from "@/components/magicui/blur-fade";
-import BlurFadeText from "@/components/magicui/blur-fade-text";
 import AIChatButton from "@/components/ai-chat-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -41,11 +40,11 @@ export default function Page() {
                     <AuroraText>Daniel</AuroraText> 👋
                 </p>
               </BlurFade>
-              <BlurFadeText
-                className="max-w-[600px] md:text-xl"
-                delay={BLUR_FADE_DELAY}
-                text={DATA.description}
-              />
+              <BlurFade delay={BLUR_FADE_DELAY}>
+                <p className="max-w-[600px] md:text-xl">
+                  {DATA.description}
+                </p>
+              </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="size-28 border">

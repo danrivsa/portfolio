@@ -29,7 +29,7 @@ const BlurFade = ({
   blur = "6px",
 }: BlurFadeProps) => {
   const ref = useRef(null);
-  const inViewResult = useInView(ref, { once: true, margin: inViewMargin as any});
+  const inViewResult = useInView(ref as any, { once: true, margin: inViewMargin as any});
   const isInView = !inView || inViewResult;
   const defaultVariants: Variants = {
     hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
@@ -49,7 +49,6 @@ const BlurFade = ({
           duration,
           ease: "easeOut",
         }}
-        className={className}
       >
         {children}
       </motion.div>

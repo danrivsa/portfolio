@@ -17,6 +17,7 @@ export async function generateMetadata({
     slug: string;
   };
 }): Promise<Metadata | undefined> {
+  if (!params?.slug) return undefined;
   let post = await getPost(params.slug);
 
   let {
@@ -58,11 +59,13 @@ export default async function Blog({
     slug: string;
   };
 }) {
-  let post = await getPost(params.slug);
-
-  if (!post) {
+  if (!params?.slug) {
     notFound();
   }
+
+  let post = await getPost(params.slug);
+
+  if (!post) notFound();
 
   return (
     <section id="blog">

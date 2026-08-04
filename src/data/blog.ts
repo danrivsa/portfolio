@@ -37,7 +37,12 @@ export async function markdownToHTML(markdown: string) {
 }
 
 export async function getPost(slug: string) {
+  if (!slug) {
+    console.error("getPost called with falsy slug:", slug);
+    throw new Error("getPost received empty slug");
+  }
   const filePath = path.join("content", `${slug}.mdx`);
+  // console.log("getPost reading", filePath);
   let source = fs.readFileSync(filePath, "utf-8");
   const { content: rawContent, data: metadata } = matter(source);
   const content = await markdownToHTML(rawContent);
