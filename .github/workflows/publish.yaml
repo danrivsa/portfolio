@@ -50,6 +50,8 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build with Next.js
+        env:
+          AGENT_SERVER_URL: ${{ secrets.AGENT_SERVER_URL }}
         run: pnpm next build
 
       - name: Upload artifact
