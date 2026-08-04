@@ -22,7 +22,9 @@ import {
 } from "@/components/ai-elements/prompt-input";
 
 //parse env variables
-import "dotenv/config";
+import {config} from "dotenv";
+
+config()
 
 type ChatMessage = {
 	id: string;
