@@ -30,8 +30,8 @@ type ChatMessage = {
 	content: string;
 };
 
-const STREAM_ENDPOINT = `${process.env.AGENT_SERVER_URL}chat/stream`
-const HEALTH_ENDPOINT = `${process.env.AGENT_SERVER_URL}/api/health`
+const STREAM_ENDPOINT = `${process.env.NEXT_PUBLIC_AGENT_SERVER_URL}chat/stream`
+const HEALTH_ENDPOINT = `${process.env.NEXT_PUBLIC_AGENT_SERVER_URL}/api/health`
 const STOP_EVENT_TYPES = new Set(["done", "end", "complete"]);
 
 let uuidFallbackCounter = 0;
