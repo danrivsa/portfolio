@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
 	Conversation,
@@ -14,6 +14,18 @@ import {
 	MessageResponse,
 } from "@/components/ai-elements/message";
 import {
+	Reasoning,
+	ReasoningContent,
+	ReasoningTrigger,
+} from "@/components/ai-elements/reasoning";
+import {
+	Tool,
+	ToolContent,
+	ToolHeader,
+	ToolInput,
+	ToolOutput,
+} from "@/components/ai-elements/tool";
+import {
 	PromptInput,
 	PromptInputBody,
 	PromptInputFooter,
@@ -24,14 +36,40 @@ import {
 //parse env variables
 import "dotenv/config";
 
+type ToolCallPart = {
+	type: "dynamic-tool";
+	toolName: string;
+	toolCallId: string;
+	title?: string;
+	state: "input-available" | "output-available" | "output-error";
+	input?: unknown;
+	output?: unknown;
+	errorText?: string;
+};
+
+type MessagePart =
+	| { type: "text"; text: string }
+	| { type: "reasoning"; text: string }
+	| { type: "tool"; tool: ToolCallPart };
+
 type ChatMessage = {
 	id: string;
 	role: "user" | "assistant";
-	content: string;
+	parts: MessagePart[];
+};
+
+type StreamEventHandlers = {
+	onText: (text: string) => void;
+	onReasoning: (text: string) => void;
+	onToolStart: (name: string, input: unknown) => void;
+	onToolEnd: (name: string, output: unknown) => void;
+	onError: (message: string) => void;
 };
 
 // const STREAM_ENDPOINT = `${process.env.NEXT_PUBLIC_AGENT_SERVER_URL}chat/stream`
 // const HEALTH_ENDPOINT = `${process.env.NEXT_PUBLIC_AGENT_SERVER_URL}/api/health`
+// const STREAM_ENDPOINT = `http://localhost:8000/api/chat/stream`
+// const HEALTH_ENDPOINT = `http://localhost:8000/api/health`
 const STREAM_ENDPOINT = `https://portfolio-agent-cjji.onrender.com/api/chat/stream`
 const HEALTH_ENDPOINT = `https://portfolio-agent-cjji.onrender.com/api/health`
 const STOP_EVENT_TYPES = new Set(["done", "end", "complete"]);
@@ -91,73 +129,141 @@ function parseSSEEvent(rawEvent: string) {
 	};
 }
 
-function getDeltaTextFromPayload(payload: string) {
-	if (!payload) {
-		return { text: "", done: false };
-	}
-
-	if (payload === "[DONE]") {
-		return { text: "", done: true };
+function parseEventData(payload: string): unknown | null {
+	if (!payload || payload === "[DONE]") {
+		return null;
 	}
 
 	try {
-		const parsed: unknown = JSON.parse(payload);
-
-		if (typeof parsed === "string") {
-			return { text: parsed, done: false };
-		}
-
-		if (!parsed || typeof parsed !== "object") {
-			return { text: "", done: false };
-		}
-
-		const event = parsed as Record<string, unknown>;
-
-		if (event.done === true) {
-			return { text: "", done: true };
-		}
-
-		if (typeof event.error === "string" && event.error.length > 0) {
-			throw new Error(event.error);
-		}
-
-		if (typeof event.text === "string") {
-			return { text: event.text, done: false };
-		}
-
-		if (typeof event.token === "string") {
-			return { text: event.token, done: false };
-		}
-
-		if (typeof event.content === "string") {
-			return { text: event.content, done: false };
-		}
-
-		const delta = event.delta as Record<string, unknown> | undefined;
-		if (delta && typeof delta.content === "string") {
-			return { text: delta.content, done: false };
-		}
-
-		const choices = event.choices as Array<Record<string, unknown>> | undefined;
-		const firstChoice = choices?.[0];
-		const choiceDelta = firstChoice?.delta as Record<string, unknown> | undefined;
-		if (choiceDelta && typeof choiceDelta.content === "string") {
-			return { text: choiceDelta.content, done: false };
-		}
-
-		return { text: "", done: false };
+		return JSON.parse(payload) as unknown;
 	} catch {
-		return { text: payload, done: false };
+		return payload;
 	}
+}
+
+function extractTextFromData(data: unknown): string {
+	if (typeof data === "string") {
+		return data;
+	}
+
+	if (!data || typeof data !== "object") {
+		return "";
+	}
+
+	const event = data as Record<string, unknown>;
+
+	if (typeof event.text === "string") {
+		return event.text;
+	}
+
+	if (typeof event.token === "string") {
+		return event.token;
+	}
+
+	if (typeof event.content === "string") {
+		return event.content;
+	}
+
+	const delta = event.delta as Record<string, unknown> | undefined;
+	if (delta && typeof delta.content === "string") {
+		return delta.content;
+	}
+
+	const choices = event.choices as Array<Record<string, unknown>> | undefined;
+	const choiceDelta = choices?.[0]?.delta as
+		| Record<string, unknown>
+		| undefined;
+	if (choiceDelta && typeof choiceDelta.content === "string") {
+		return choiceDelta.content;
+	}
+
+	return "";
+}
+
+function extractToolName(data: unknown): string {
+	if (data && typeof data === "object") {
+		const name = (data as Record<string, unknown>).name;
+		if (typeof name === "string") {
+			return name;
+		}
+	}
+	return "tool";
+}
+
+function extractToolValue(data: unknown, key: "input" | "output"): unknown {
+	if (data && typeof data === "object") {
+		return (data as Record<string, unknown>)[key];
+	}
+	return undefined;
+}
+
+function extractErrorMessage(data: unknown): string {
+	if (data && typeof data === "object") {
+		const error = (data as Record<string, unknown>).error;
+		if (typeof error === "string") {
+			return error;
+		}
+	}
+	return "Unknown error";
+}
+
+function isDoneSignal(data: unknown): boolean {
+	return (
+		data === null ||
+		(typeof data === "object" &&
+			(data as Record<string, unknown>).done === true)
+	);
 }
 
 function shouldStopStream(eventType: string, doneSignal: boolean) {
 	return doneSignal || STOP_EVENT_TYPES.has(eventType);
 }
 
+function dispatchStreamEvent(
+	eventType: string,
+	data: unknown,
+	handlers: StreamEventHandlers
+): boolean {
+	if (
+		eventType === "error" ||
+		(data &&
+			typeof data === "object" &&
+			typeof (data as Record<string, unknown>).error === "string")
+	) {
+		handlers.onError(extractErrorMessage(data));
+		return true;
+	}
+
+	const text = extractTextFromData(data);
+
+	if (eventType === "reasoning") {
+		if (text) {
+			handlers.onReasoning(text);
+		}
+	} else if (eventType === "tool_start") {
+		handlers.onToolStart(
+			extractToolName(data),
+			extractToolValue(data, "input")
+		);
+	} else if (eventType === "tool_end") {
+		handlers.onToolEnd(
+			extractToolName(data),
+			extractToolValue(data, "output")
+		);
+	} else if (eventType === "message") {
+		if (text) {
+			handlers.onText(text);
+		}
+	} else if (text) {
+		handlers.onText(text);
+	}
+
+	return shouldStopStream(eventType, isDoneSignal(data));
+}
+
 async function streamAssistantResponse(
 	responseBody: ReadableStream<Uint8Array>,
-	onChunk: (chunk: string) => void
+	handlers: StreamEventHandlers
 ) {
 	const reader = responseBody.getReader();
 	const decoder = new TextDecoder();
@@ -178,13 +284,9 @@ async function streamAssistantResponse(
 			buffer = buffer.slice(separatorIndex + 2);
 
 			const { eventType, payload } = parseSSEEvent(rawEvent);
-			const { text, done: doneSignal } = getDeltaTextFromPayload(payload);
+			const data = parseEventData(payload);
 
-			if (text) {
-				onChunk(text);
-			}
-
-			if (shouldStopStream(eventType, doneSignal)) {
+			if (dispatchStreamEvent(eventType, data, handlers)) {
 				shouldStop = true;
 				break;
 			}
@@ -198,6 +300,9 @@ export function Chat() {
 	const [messages, setMessages] = useState<ChatMessage[]>([]);
 	const [agentHealthy, setAgentHealthy] = useState<boolean | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
+	const [streamingMessageId, setStreamingMessageId] = useState<string | null>(
+		null
+	);
 
 	const threadIdRef = useRef<string>(createUUIDv4());
 	const activeRequestRef = useRef<AbortController | null>(null);
@@ -234,45 +339,138 @@ export function Chat() {
 		};
 	}, []);
 
-	const appendAssistantText = (assistantId: string, textChunk: string) => {
-		if (!textChunk) {
-			return;
-		}
+	const updateAssistantParts = useCallback(
+		(
+			assistantId: string,
+			updater: (parts: MessagePart[]) => MessagePart[]
+		) => {
+			setMessages((prev) => {
+				const targetIndex = prev.findIndex(
+					(entry) => entry.id === assistantId
+				);
+				if (targetIndex === -1) {
+					return prev;
+				}
 
-		setMessages((prev) => {
-			const targetIndex = prev.findIndex((entry) => entry.id === assistantId);
-			if (targetIndex === -1) {
-				return prev;
+				const next = [...prev];
+				next[targetIndex] = {
+					...next[targetIndex],
+					parts: updater(next[targetIndex].parts),
+				};
+
+				return next;
+			});
+		},
+		[]
+	);
+
+	const appendText = useCallback(
+		(assistantId: string, textChunk: string) => {
+			if (!textChunk) {
+				return;
 			}
 
-			const next = [...prev];
-			const assistantMessage = next[targetIndex];
+			updateAssistantParts(assistantId, (parts) => {
+				const last = parts.at(-1);
+				if (last && last.type === "text") {
+					return [
+						...parts.slice(0, -1),
+						{ ...last, text: last.text + textChunk },
+					];
+				}
 
-			next[targetIndex] = {
-				...assistantMessage,
-				content: assistantMessage.content + textChunk,
-			};
+				return [...parts, { type: "text", text: textChunk }];
+			});
+		},
+		[updateAssistantParts]
+	);
 
-			return next;
-		});
-	};
-
-	const setAssistantText = (assistantId: string, text: string) => {
-		setMessages((prev) => {
-			const targetIndex = prev.findIndex((entry) => entry.id === assistantId);
-			if (targetIndex === -1) {
-				return prev;
+	const appendReasoning = useCallback(
+		(assistantId: string, textChunk: string) => {
+			if (!textChunk) {
+				return;
 			}
 
-			const next = [...prev];
-			next[targetIndex] = {
-				...next[targetIndex],
-				content: text,
-			};
+			updateAssistantParts(assistantId, (parts) => {
+				const last = parts.at(-1);
+				if (last && last.type === "reasoning") {
+					return [
+						...parts.slice(0, -1),
+						{ ...last, text: last.text + textChunk },
+					];
+				}
 
-			return next;
-		});
-	};
+				return [...parts, { type: "reasoning", text: textChunk }];
+			});
+		},
+		[updateAssistantParts]
+	);
+
+	const startTool = useCallback(
+		(assistantId: string, name: string, input: unknown) => {
+			updateAssistantParts(assistantId, (parts) => [
+				...parts,
+				{
+					type: "tool",
+					tool: {
+						type: "dynamic-tool",
+						toolName: name,
+						toolCallId: createUUIDv4(),
+						state: "input-available",
+						input,
+					},
+				},
+			]);
+		},
+		[updateAssistantParts]
+	);
+
+	const endTool = useCallback(
+		(assistantId: string, name: string, output: unknown) => {
+			updateAssistantParts(assistantId, (parts) => {
+				const next = [...parts];
+				for (let i = next.length - 1; i >= 0; i--) {
+					const part = next[i];
+					if (
+						part.type === "tool" &&
+						part.tool.toolName === name &&
+						part.tool.state === "input-available"
+					) {
+						next[i] = {
+							...part,
+							tool: {
+								...part.tool,
+								state: "output-available",
+								output,
+							},
+						};
+						break;
+					}
+				}
+
+				return next;
+			});
+		},
+		[updateAssistantParts]
+	);
+
+	const setAssistantError = useCallback(
+		(assistantId: string, message: string) => {
+			updateAssistantParts(assistantId, (parts) => {
+				const errorText = `Error: ${message}`;
+				const last = parts.at(-1);
+				if (last && last.type === "text") {
+					return [
+						...parts.slice(0, -1),
+						{ ...last, text: last.text + errorText },
+					];
+				}
+
+				return [...parts, { type: "text", text: errorText }];
+			});
+		},
+		[updateAssistantParts]
+	);
 
 	const submitMessage = async (text: string) => {
 		const trimmedText = text.trim();
@@ -289,9 +487,10 @@ export function Chat() {
 
 		setMessages((prev) => [
 			...prev,
-			{ id: userId, role: "user", content: trimmedText },
-			{ id: assistantId, role: "assistant", content: "" },
+			{ id: userId, role: "user", parts: [{ type: "text", text: trimmedText }] },
+			{ id: assistantId, role: "assistant", parts: [] },
 		]);
+		setStreamingMessageId(assistantId);
 		setIsLoading(true);
 
 		try {
@@ -316,8 +515,12 @@ export function Chat() {
 				throw new Error("No response body received from SSE endpoint");
 			}
 
-			await streamAssistantResponse(response.body, (chunk) => {
-				appendAssistantText(assistantId, chunk);
+			await streamAssistantResponse(response.body, {
+				onText: (chunk) => appendText(assistantId, chunk),
+				onReasoning: (chunk) => appendReasoning(assistantId, chunk),
+				onToolStart: (name, input) => startTool(assistantId, name, input),
+				onToolEnd: (name, output) => endTool(assistantId, name, output),
+				onError: (message) => setAssistantError(assistantId, message),
 			});
 		} catch (error) {
 			if (abortController.signal.aborted) {
@@ -329,9 +532,10 @@ export function Chat() {
 					? error.message
 					: "Failed to connect to the chat stream";
 
-			setAssistantText(assistantId, `Error: ${message}`);
+			setAssistantError(assistantId, message);
 		} finally {
 			setIsLoading(false);
+			setStreamingMessageId(null);
 			if (activeRequestRef.current === abortController) {
 				activeRequestRef.current = null;
 			}
@@ -350,25 +554,77 @@ export function Chat() {
 						/>
 					) : null}
 
-					{messages.map((msg) => {
-						if (msg.role === "user") {
-							return (
-								<Message key={msg.id} from="user">
-									<MessageContent className="text-[13px] leading-relaxed group-[.is-user]:px-3 group-[.is-user]:py-2.5 sm:text-sm">
-										{msg.content}
-									</MessageContent>
-								</Message>
-							);
-						}
-
+				{messages.map((msg) => {
+					if (msg.role === "user") {
 						return (
-							<Message key={msg.id} from="assistant">
-								<MessageContent className="text-[13px] leading-relaxed sm:text-sm">
-									<MessageResponse>{msg.content}</MessageResponse>
+							<Message key={msg.id} from="user">
+								<MessageContent className="text-[13px] leading-relaxed group-[.is-user]:px-3 group-[.is-user]:py-2.5 sm:text-sm">
+									{msg.parts
+										.filter((part) => part.type === "text")
+										.map((part) => part.text)
+										.join("")}
 								</MessageContent>
 							</Message>
 						);
-					})}
+					}
+
+					const isStreaming =
+						isLoading && streamingMessageId === msg.id;
+
+					return (
+						<Message key={msg.id} from="assistant">
+							<MessageContent className="text-[13px] leading-relaxed sm:text-sm">
+								{msg.parts.map((part, index) => {
+									if (part.type === "reasoning") {
+										return (
+											<Reasoning
+												key={index}
+												isStreaming={isStreaming}
+											>
+												<ReasoningTrigger />
+												<ReasoningContent>
+													{part.text}
+												</ReasoningContent>
+											</Reasoning>
+										);
+									}
+
+									if (part.type === "tool") {
+										return (
+											<Tool key={index} defaultOpen={true}>
+												<ToolHeader
+													type="dynamic-tool"
+													state={part.tool.state}
+													toolName={part.tool.toolName}
+												/>
+												<ToolContent>
+													{part.tool.input !==
+														undefined && (
+														<ToolInput
+															input={part.tool.input}
+														/>
+													)}
+													<ToolOutput
+														output={part.tool.output}
+														errorText={
+															part.tool.errorText
+														}
+													/>
+												</ToolContent>
+											</Tool>
+										);
+									}
+
+									return (
+										<MessageResponse key={index}>
+											{part.text}
+										</MessageResponse>
+									);
+								})}
+							</MessageContent>
+						</Message>
+					);
+				})}
 					</ConversationContent>
 
 					<ConversationScrollButton className="bottom-3" />

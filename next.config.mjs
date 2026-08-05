@@ -4,7 +4,7 @@ const nextConfig = {
   output:'export',
   reactStrictMode: true,
   env: {
-    NEXT_PUBLIC_BASE_PATH: '/portfolio'
+    NEXT_PUBLIC_BASE_PATH: '/portfolio',
   }
 };
 
