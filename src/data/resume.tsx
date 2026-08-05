@@ -228,16 +228,28 @@ export const DATA = {
 
   work: [
     {
-      company: "MX Global Center",
-      href: "https://mxglobal.center/",
+      company: "Mesh Scheduling Inc",
+      href: "https://welcome.meshai.io/",
       badges: [],
       location: "Remote",
-      title: "Software Engineer",
-      logoUrl: "/portfolio/mx-global.png",
+      title: "AI/ML Engineer",
+      logoUrl: "/portfolio/meshai-logo.png",
+      start: "Jun 2025",
+      end: undefined,
+      description:
+        "As an AI/ML Engineer at Mesh Scheduling Inc, I focused on developing advanced AI solutions and integrating them into the existing infrastructure. Some of the key achievements were an interactive agent to help physicians manage their schedules through natural language and a full agentic solution to onboard new organizations optimizing the company's scheduling platform, resulting in improved user experience and operational efficiency.",
+    },
+    {
+      company: "vOfiz Inc",
+      href: "https://vofiz.com/",
+      badges: [],
+      location: "Remote",
+      title: "Software Developer",
+      logoUrl: "/portfolio/vOfiz-Logo.svg",
       start: "Oct 2024",
       end: undefined,
       description:
-        "As a Software Engineer at MX Global Center, I focused on enhancing operational efficiency and streamlining processes. I was instrumental in maintaining and optimizing critical infrastructure components, implementing innovative software solutions and APIs to automate repetitive tasks. I leveraged my expertise in Angular and Xano to develop custom applications, including an ETL process to automate manual journal calculations. By automating these tasks, I significantly reduced operational costs, increased accuracy, and improved overall productivity.",
+        "As a Software Developer at vOfiz Inc, I focused on enhancing operational efficiency and streamlining processes. I was instrumental in maintaining and optimizing critical infrastructure components, implementing innovative software solutions and APIs to automate repetitive tasks. I leveraged my expertise in Angular and Xano to develop custom applications, including an ETL process to automate manual journal calculations. By automating these tasks, I significantly reduced operational costs, increased accuracy, and improved overall productivity.",
     },
     {
       company: "Newtoms LLC",
