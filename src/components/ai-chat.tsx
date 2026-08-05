@@ -33,9 +33,6 @@ import {
 	PromptInputTextarea,
 } from "@/components/ai-elements/prompt-input";
 
-//parse env variables
-import "dotenv/config";
-
 type ToolCallPart = {
 	type: "dynamic-tool";
 	toolName: string;
@@ -66,12 +63,10 @@ type StreamEventHandlers = {
 	onError: (message: string) => void;
 };
 
-// const STREAM_ENDPOINT = `${process.env.NEXT_PUBLIC_AGENT_SERVER_URL}chat/stream`
-// const HEALTH_ENDPOINT = `${process.env.NEXT_PUBLIC_AGENT_SERVER_URL}/api/health`
-// const STREAM_ENDPOINT = `http://localhost:8000/api/chat/stream`
-// const HEALTH_ENDPOINT = `http://localhost:8000/api/health`
-const STREAM_ENDPOINT = `https://portfolio-agent-cjji.onrender.com/api/chat/stream`
-const HEALTH_ENDPOINT = `https://portfolio-agent-cjji.onrender.com/api/health`
+const AGENT_SERVER_URL =
+	process.env.NEXT_PUBLIC_AGENT_SERVER_URL ?? "http://localhost:8000/api";
+const STREAM_ENDPOINT = `${AGENT_SERVER_URL}/chat/stream`;
+const HEALTH_ENDPOINT = `${AGENT_SERVER_URL}/health`;
 const STOP_EVENT_TYPES = new Set(["done", "end", "complete"]);
 
 let uuidFallbackCounter = 0;
